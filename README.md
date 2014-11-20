@@ -7,9 +7,15 @@ This is example project to show how we could make this kind of animation on Andr
 
 Just open it in AndroidStudio !
 
+GET DEMO ON GOOGLE PLAY!
+
+https://play.google.com/store/apps/details?id=com.kulaga.lollipoptoolbarexample
+
 
 
 ### How to use it :
+
+LpActionButton: 
 
   There are class called LpActionButton. It inflates view and binds it to our ActionBar (if we don't have one - then during view initialization will be thrown NoActionBarException)
   
