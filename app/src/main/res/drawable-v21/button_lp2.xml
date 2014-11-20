@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="56dp"
+    android:width="56dp"
+    android:viewportHeight="100"
+    android:viewportWidth="100" >
+    <group
+        android:name="button_lp2"
+        android:pivotX="50"
+        android:pivotY="50">
+        <path
+            android:fillColor="@color/bright_red"
+            android:pathData="@string/path_circle"/>
+        <path
+            android:strokeColor="@android:color/white"
+            android:strokeWidth="@integer/stroke_width"
+            android:pathData="M 75,50 L 25,50"/>
+
+    </group>
+</vector>
