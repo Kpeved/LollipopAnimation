@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -180,6 +181,9 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
             public void onAnimationEnd(Animator animation) {
                 bringToFrontActionBar();
 
+
+
+
                 if (mShouldBlend) {
                     transitionAnimation();
                 }
@@ -251,13 +255,25 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
     }
 
     private void bringToFrontActionBar(){
-        mActionContainer.bringToFront();
-        mActionContainer.requestLayout();
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            ViewGroup container = (ViewGroup) mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
+            container.getOverlay().add(mView);
+        } else {
+            mActionContainer.bringToFront();
+            mActionContainer.requestLayout();
+        }
     }
 
     private void bringToFrontButton(){
-        mImageButtonContainer.bringToFront();
-        mImageButtonContainer.requestLayout();
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            ViewGroup container = (ViewGroup) mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
+            container.getOverlay().remove(mView);
+            mImageButtonContainer.addView(mView);
+        } else {
+            mImageButtonContainer.bringToFront();
+            mImageButtonContainer.requestLayout();
+        }
     }
 
     private void toggleVisibility(){
