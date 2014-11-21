@@ -7,7 +7,7 @@
     android:viewportHeight="100"
     android:viewportWidth="100" >
     <group
-        android:name="button_lp2"
+        android:name="button_lp2_1"
         android:pivotX="50"
         android:pivotY="50">
         <path

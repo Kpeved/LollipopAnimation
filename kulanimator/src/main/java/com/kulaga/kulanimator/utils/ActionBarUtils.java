@@ -42,7 +42,7 @@ public class ActionBarUtils {
     public static void setActionBarMarginToView(View v, int margin) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            p.setMargins(p.leftMargin,margin+v.getHeight()/2,p.rightMargin,p.bottomMargin);
+            p.setMargins(p.leftMargin,margin+v.getMeasuredHeight()/2,p.rightMargin,p.bottomMargin);
             v.requestLayout();
         }
     }

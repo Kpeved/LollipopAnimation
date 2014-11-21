@@ -119,7 +119,7 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
                 public void getOutline(View view, Outline outline) {
                     // Or read size directly from the view's width/height
                     int size = mView.getMeasuredHeight();
-                    outline.setOval(0, 0, size, size);
+                    outline.setOval(0, 0, size-1, size-1);
                 }
             };
             mView.setOutlineProvider(viewOutlineProvider);

@@ -7,9 +7,12 @@
     android:viewportHeight="100"
     android:viewportWidth="100" >
     <group
-        android:name="button_lp"
+        android:name="button_lp_1"
         android:pivotX="50"
         android:pivotY="50">
+        <path
+            android:fillColor="@color/field_green"
+            android:pathData="@string/path_circle"/>
         <path
             android:fillColor="@color/field_green"
             android:pathData="@string/path_circle"/>
