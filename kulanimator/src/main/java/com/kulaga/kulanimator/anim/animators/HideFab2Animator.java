@@ -16,9 +16,9 @@ public class HideFab2Animator extends BaseAnimator {
     protected void prepare(View target) {
 
         ObjectAnimator animationX = ObjectAnimator.ofFloat(target, "translationX", dpToPx(-20), dpToPx(-40));
-        ObjectAnimator shrinkY = ObjectAnimator.ofFloat(target, "scaleY", 0.0f, 1.3f);
+        ObjectAnimator shrinkY = ObjectAnimator.ofFloat(target, "scaleY", 0.0f, 1.1f);
         ObjectAnimator shrinkX = ObjectAnimator.ofFloat(target, "scaleX", 0.9f, 0.4f);
-        ObjectAnimator animationY = ObjectAnimator.ofFloat(target, "translationY",dpToPx(90),dpToPx(-200));
+        ObjectAnimator animationY = ObjectAnimator.ofFloat(target, "translationY",dpToPx(90),dpToPx(-50));
         animationY.setInterpolator(new AccelerateInterpolator());
         animationX.setInterpolator(new DecelerateInterpolator());
         AnimatorSet animatorSet = new AnimatorSet();

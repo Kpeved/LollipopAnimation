@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.kulaga.kulanimator.anim.KulAnimator;
 import com.kulaga.kulanimator.ui.LpActionButton;
@@ -17,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
     private Fragment mCurrentFragment;
 
     private ColorDrawable mActionBarBackground;
+    private ColorDrawable mMainContentBackground;
     private LpActionButton mLpActionButton;
 
     private int mCageCounter;
@@ -25,10 +27,16 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
 
         mActionBarBackground = new ColorDrawable(getResources().getColor(R.color.dark_green));
+        mMainContentBackground = new ColorDrawable(getResources().getColor(R.color.dark_green));
         getSupportActionBar().setBackgroundDrawable(mActionBarBackground);
+        setContentView(R.layout.activity_main);
+
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.main_layout);
+        linearLayout.setBackground(mMainContentBackground);
 
         mLpActionButton = LpActionButton.createLpActionButton(this,R.layout.button_my_lp);
 
@@ -49,15 +57,18 @@ public class MainActivity extends ActionBarActivity {
             public void onAnimationFinished(boolean isVisible) {
                 if (!isVisible) {
                     isToggled = !isToggled;
+                    final int colorFrom;
+                    final int colorTo;
                     if(isToggled) {
-                        final int colorFrom = mActionBarBackground.getColor();
-                        final int colorTo = getResources().getColor(R.color.purple);
-                        changeActionBarColor(colorFrom,colorTo);
+                        colorFrom = mActionBarBackground.getColor();
+                        colorTo = getResources().getColor(R.color.purple);
+
                     } else {
-                        final int colorFrom = mActionBarBackground.getColor();
-                        final int colorTo = getResources().getColor(R.color.dark_green);
-                        changeActionBarColor(colorFrom, colorTo);
+                        colorFrom = mActionBarBackground.getColor();
+                        colorTo = getResources().getColor(R.color.dark_green);
                     }
+                    changeActionBarColor(colorFrom,colorTo);
+                    changeMainContentColor(colorFrom,colorTo,KulAnimator.DEF_DURATION);
 
                     mLpActionButton.show();
 
@@ -115,6 +126,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void changeActionBarColor(int fromColor, int toColor, long duration){
         KulAnimator.changeColorDrawableAnimation(fromColor, toColor, duration, mActionBarBackground).start();
+    }
+
+    public void changeMainContentColor(int fromColor, int toColor, long duration){
+        KulAnimator.changeColorDrawableAnimation(fromColor, toColor, duration, mMainContentBackground).start();
     }
 
     private void checkCage() {

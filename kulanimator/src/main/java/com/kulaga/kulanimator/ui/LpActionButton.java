@@ -75,7 +75,7 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
     }
 
     private static ViewGroup loadFromRes(Context context, int layoutId) {
-        return (ViewGroup) ((LayoutInflater)context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(layoutId,null);
+        return (ViewGroup) LayoutInflater.from(context).inflate(layoutId,null);
     }
 
     private LpActionButton(Activity activity, ViewGroup viewGroup , View view ){
@@ -211,7 +211,7 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
                     @Override
                     public void onAnimationRepeat(Animator animation) {
                     }
-                }).duration(250).start(mView);
+                }).duration(100).start(mView);
             }
 
             @Override
