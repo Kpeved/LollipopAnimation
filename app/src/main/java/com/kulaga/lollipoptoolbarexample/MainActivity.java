@@ -19,6 +19,7 @@ public class MainActivity extends ActionBarActivity {
     private ColorDrawable mActionBarBackground;
     private LpActionButton mLpActionButton;
 
+    private int mCageCounter;
     private boolean isToggled;
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     mLpActionButton.setSecondDrawable(R.drawable.button_lp2);
                 }
+                checkCage();
                 mLpActionButton.hide();
             }
         });
@@ -113,6 +115,13 @@ public class MainActivity extends ActionBarActivity {
 
     public void changeActionBarColor(int fromColor, int toColor, long duration){
         KulAnimator.changeColorDrawableAnimation(fromColor, toColor, duration, mActionBarBackground).start();
+    }
+
+    private void checkCage() {
+        if(mCageCounter==4){
+            mLpActionButton.setSecondDrawable(R.drawable.nick_cage);
+            mCageCounter = 0;
+        } else mCageCounter ++ ;
     }
 
 }
