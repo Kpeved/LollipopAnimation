@@ -3,7 +3,6 @@ package com.kulaga.kulanimator.ui;
 import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import com.kulaga.kulanimator.R;
 import com.kulaga.kulanimator.anim.BaseKulAnimator;
 import com.kulaga.kulanimator.anim.KulAnimations;
 import com.kulaga.kulanimator.anim.KulAnimator;
-import com.kulaga.kulanimator.anim.utils.ActionBarUtils;
+import com.kulaga.kulanimator.utils.ActionBarUtils;
 
 /**
  * Created by Michail Kulaga on 11/19/2014.
@@ -103,7 +102,7 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
         mBackgroundDrawable = mView.getBackground();
 
 
-        ActionBarUtils.setActionBarMargin(mView, ActionBarUtils.getActionBarHeight(mActivity));
+        ActionBarUtils.setActionBarMarginToView(mView, ActionBarUtils.getActionBarHeight(mActivity));
 
         initAnimations();
     }

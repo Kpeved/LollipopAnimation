@@ -1,4 +1,4 @@
-package com.kulaga.kulanimator.anim.utils;
+package com.kulaga.kulanimator.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,7 +27,7 @@ public class ActionBarUtils {
      * @param activity
      * @throws com.kulaga.kulanimator.exception.NoActionBarException
      */
-    public static void checkForActionBar(Activity activity) {
+    public static void checkForActionBar(Activity activity) throws NoActionBarException{
         // Checking for actionBar support, if no throwing exception
         if(activity instanceof ActionBarActivity){
             if(((ActionBarActivity)activity).getSupportActionBar() == null)
@@ -39,7 +39,7 @@ public class ActionBarUtils {
     }
 
 
-    public static void setActionBarMargin (View v, int margin) {
+    public static void setActionBarMarginToView(View v, int margin) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             p.setMargins(p.leftMargin,margin/2,p.rightMargin,p.bottomMargin);
