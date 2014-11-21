@@ -3,11 +3,13 @@ package com.kulaga.kulanimator.ui;
 import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Outline;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.Window;
 
 import com.kulaga.kulanimator.R;
@@ -75,7 +77,7 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
     }
 
     private static ViewGroup loadFromRes(Context context, int layoutId) {
-        return (ViewGroup) LayoutInflater.from(context).inflate(layoutId,null);
+        return (ViewGroup) LayoutInflater.from(context).inflate(layoutId, null);
     }
 
     private LpActionButton(Activity activity, ViewGroup viewGroup , View view ){
@@ -106,6 +108,22 @@ public class LpActionButton extends ForwardingView implements Animator.AnimatorL
         ActionBarUtils.setActionBarMarginToView(mView, ActionBarUtils.getActionBarHeight(mActivity));
 
         initAnimations();
+
+        initOutlines();
+    }
+
+    private void initOutlines() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ViewOutlineProvider viewOutlineProvider = new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View view, Outline outline) {
+                    // Or read size directly from the view's width/height
+                    int size = mView.getMeasuredHeight();
+                    outline.setOval(0, 0, size, size);
+                }
+            };
+            mView.setOutlineProvider(viewOutlineProvider);
+        }
     }
 
     private ViewGroup getMainContainer() {

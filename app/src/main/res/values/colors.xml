@@ -9,4 +9,5 @@
     <color name="dark_red">#D24747</color>
     <color name="purple">#a927ae</color>
     <color name="bright_red">#d61257</color>
+    <color name="shadow">#22000000</color>
 </resources>
